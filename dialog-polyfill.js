@@ -1,4 +1,10 @@
 (function() {
+  
+  // Don't provide the polyfill in server environments
+  if (!(typeof window !== 'undefined'
+      && Object.prototype.toString.call(window) !== '[object Object]')) {
+    return;
+  }
 
   var supportCustomEvent = window.CustomEvent;
   if (!supportCustomEvent || typeof supportCustomEvent == 'object') {
